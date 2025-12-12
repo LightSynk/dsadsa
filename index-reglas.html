@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reglas - WasFactions</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Negrita para títulos y subtítulos */
+.side-box .title,
+.side-box .subtitle {
+    font-weight: bold;
+}
+
+.hover-item {
+    font-weight: bold;
+}
+
+/* Body */
+body {
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 40px;
+    overflow-x: hidden;
+    z-index: 0; 
+}
+
+/* Imagen de fondo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('ASSETS/imagenes/cuadraditos/capturas/subcuadro 2/2.png') no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -2; 
+}
+
+/* Gradiente difuminado sobre la imagen */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 13, 13, 0.324) 0%,    
+        rgba(13, 13, 13, 0.38) 40%,   
+        rgba(13, 13, 13, 0.476) 60%,
+        rgba(13, 13, 13, 0.606) 80%,
+        rgba(13, 13, 13, 0.742) 90%,
+        rgba(13, 13, 13, 0.901) 100%  
+    );
+    pointer-events: none; 
+    z-index: -1; 
+}
+
+/* Logo + textos laterales */
+.logo-section {
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+}
+
+.logo-image {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%; 
+    object-fit: cover;   
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0); 
+}
+
+.left-side, .right-side {
+    position: relative;
+    top: -200px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+}
+
+.left-side { align-items: flex-start; }
+.right-side { align-items: flex-end; }
+
+.side-box .title {
+    font-size: 30px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.side-box .subtitle {
+    font-size: 15px;
+    color: #ff00ff;
+}
+
+/* Top Container (Staff + Navegación) */
+.top-container {
+    position: relative;
+    top: -170px; 
+    display: flex;
+    width: 90%;
+    max-width: 1600px;
+    gap: 20px;
+    justify-content: center;
+}
+.top-left {
+    flex: 0 0 280px;
+    height: 100px;
+    background: #101010;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+
+.top-right {
+    flex: 1;
+    max-width: calc(90% - 300px);
+    height: 100px;
+    background: #101010;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.hover-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #999;
+    position: relative;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.hover-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #999;
+    position: relative;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.hover-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #ff00ff;
+    box-shadow: 0 0 8px #ff00ff;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.hover-item.active::after {
+    width: 100%;
+    background: #ff00ff;
+    box-shadow: 0 0 8px #ff00ff;
+}
+
+.hover-item.active:hover::after {
+    width: 100%;
+    background: #ff00ff;
+}
+
+.hover-item:hover {
+    color: #fff;
+}
+
+.hover-item:hover::after {
+    width: 100%;
+}
+
+.hover-item:hover .nav-symbol {
+    color: #fff;
+}
+
+.nav-symbol {
+    font-size: 20px;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+/* Reglas section */
+.reglas-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    background: #101010;
+    border-radius: 15px;
+    padding: 30px 20px;
+    margin-top: -180px;
+}
+
+.reglas-title { color: #fff; font-size: 28px; font-weight: bold; margin-bottom: 20px; }
+
+/* Cuadros de reglas */
+.regla-card {
+    background: #3a3a3a;
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.regla-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ffc2ff42;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background: #101010;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-family: 'Press Start 2P', cursive;
+}
+
+footer a { text-decoration: none; color: inherit; margin: 0 10px; font-weight: bold; }
+
+/* Para todos los navegadores */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: auto;       /* deja que crezca con el contenido */
+    overflow: auto;     /* scroll funcional */
+}
+
+/* Chrome, Edge, Safari */
+html::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;       /* también oculta el scroll horizontal si hay */
+    background: transparent; 
+}
+
+/* Firefox */
+html {
+    scrollbar-width: none; /* oculta la barra */
+    scrollbar-color: transparent transparent; /* track y thumb invisibles */
+}
+.nav-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    filter: brightness(0.75); /* igual al color gris de los emojis */
+    transition: 0.3s ease;
+    margin-right: -30px;
+}
+
+.hover-item:hover .nav-icon,
+.hover-item.active .nav-icon {
+    filter: brightness(1); /* se ilumina igual que el hover del emoji */
+}
+
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Votar - WasFactions</title>
+    <!-- Favicon -->
+    <link rel="icon" href="ASSETS/imagenes/logo/WASFACTIONS.png" type="image/png" sizes="32x32">
+</head>
+<body>
+
+<!-- Sección superior: Logo + BodrioCraft / Discord -->
+<div class="logo-section">
+    <!-- Lado izquierdo: IP del servidor -->
+    <div class="side-box left-side" id="ip-block" style="cursor:pointer;">
+        <div class="title">BodrioCraft.es</div>
+        <div class="subtitle">¡CLICK PARA COPIAR!</div>
+    </div>
+
+    <!-- Círculo del logo -->
+    <img src="C:\Users\elspi\OneDrive\Desktop\server\LAUNCHER\PAGINA\ASSETS\imagenes\logo\bodriocraft.png" 
+     alt="Logo BodrioCraft" class="logo-image">
+
+    <!-- Lado derecho: Discord -->
+    <div class="side-box right-side" id="discord-block" style="cursor:pointer;">
+        <div class="title">Discord</div>
+        <div class="subtitle">¡CLICK PARA UNIRTE!</div>
+    </div>
+</div>
+
+<!-- Top navigation -->
+<div class="top-container">
+    <div class="top-left">
+        <div class="hover-item" onclick="window.location.href='index-staff.html'">
+            <img src="ASSETS/imagenes/cuadraditos/ICONO/coronas.png" alt="Staff" class="nav-icon">STAFF
+        </div>
+    </div>
+    <div class="top-right">
+<div class="hover-item" onclick="window.location.href='index.html'">
+    <img src="ASSETS/imagenes/cuadraditos/ICONO/house.png" class="nav-icon" alt="Inicio">
+    INICIO
+</div>
+
+<div class="hover-item active" onclick="window.location.href='index-reglas.html'">
+    <img src="ASSETS/imagenes/cuadraditos/ICONO/REGLAS.png" class="nav-icon" alt="Reglas">
+    REGLAS
+</div>
+
+<div class="hover-item" onclick="window.location.href='index-votar.html'">
+    <img src="ASSETS/imagenes/cuadraditos/ICONO/votar.png" class="nav-icon" alt="Votar">
+    VOTAR
+</div>
+
+<div class="hover-item" onclick="window.location.href='https://wasfactions-webstore.tebex.io/'">
+    <img src="ASSETS/imagenes/cuadraditos/ICONO/tienda.png" class="nav-icon" alt="Tienda">
+    TIENDA
+</div>
+
+    </div>
+</div>
+
+<!-- Reglas -->
+<div class="reglas-section">
+    <div class="reglas-title">REGLAS DEL SERVIDOR</div>
+
+    <div class="regla-card">1️⃣ No hacer grief a otros jugadores.</div>
+    <div class="regla-card">2️⃣ Prohibido el uso de cheats o hacks.</div>
+    <div class="regla-card">3️⃣ Respeta a los demás jugadores y staff.</div>
+    <div class="regla-card">4️⃣ No spamear, flood o publicidad sin permiso.</div>
+    <div class="regla-card">5️⃣ Mantén los nombres y skins apropiados.</div>
+    <div class="regla-card">6️⃣ Sigue las instrucciones del staff.</div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div><strong>IP:</strong> play.WasFactions.es</div>
+    <div>
+        <a href="index.html">Inicio</a>
+        <a href="index-reglas.html">Reglas</a>
+        <a href="index-tienda.html">Tienda</a>
+    </div>
+    <div>
+        <a href="https://discord.gg/JAGKSeCfE4" style="color:#7289DA;">Discord</a>
+        <a href="https://www.youtube.com/@FabiUchiwua" style="color:#FF0000;">YouTube</a>
+    </div>
+    <div style="width:100%; text-align:center; margin-top:10px; font-size:12px;">
+        © 2025 WasFactions. Todos los derechos reservados.
+    </div>
+</footer>
+
+<script>
+    // Copiar IP al portapapeles
+    document.getElementById('ip-block').addEventListener('click', function() {
+        navigator.clipboard.writeText('BodrioCraft.es').then(function() {
+            alert('IP copiada: BodrioCraft.es');
+        }, function(err) {
+            console.error('Error al copiar: ', err);
+        });
+    });
+
+    // Abrir Discord en nueva pestaña
+    document.getElementById('discord-block').addEventListener('click', function() {
+        window.open('https://discord.gg/JAGKSeCfE4', '_blank');
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Boceto con Logo Arriba</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Negrita para todos los títulos y subtítulos laterales */
+.side-box .title,
+.side-box .subtitle {
+    font-weight: bold; /* negrita */
+}
+
+/* Negrita para los items de navegación */
+.hover-item {
+    font-weight: bold; /* negrita */
+}
+
+/* Mantener todo lo demás igual */
+body {
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 40px;
+    overflow-x: hidden;
+    z-index: 0; 
+}
+
+/* Imagen de fondo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('ASSETS/imagenes/cuadraditos/capturas/subcuadro 2/2.png') no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -2; 
+}
+
+/* Gradiente difuminado sobre la imagen */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 13, 13, 0.324) 0%,    
+        rgba(13, 13, 13, 0.38) 40%,   
+        rgba(13, 13, 13, 0.476) 60%,
+        rgba(13, 13, 13, 0.606) 80%,
+        rgba(13, 13, 13, 0.742) 90%,
+        rgba(13, 13, 13, 0.901) 100%  
+    );
+    pointer-events: none; 
+    z-index: -1; 
+}
+
+/* Sección superior: Logo + BodrioCraft / Discord */
+.logo-section {
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+}
+
+.logo-image {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%; 
+    object-fit: cover;   
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0); 
+}
+
+/* Subir los textos laterales */
+.left-side {
+    position: relative;
+    top: -200px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: flex-start; 
+}
+
+.right-side {
+    position: relative;
+    top: -200px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: flex-end; 
+}
+
+.side-box .title {
+    font-size: 30px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.side-box .subtitle {
+    font-size: 15px;
+    color: #ff00ff;
+}
+
+/* Top Container (Staff + Navegación) */
+.top-container {
+    position: relative;
+    top: -170px; 
+    display: flex;
+    width: 90%;
+    max-width: 1600px;
+    gap: 20px;
+    justify-content: center;
+}
+
+.top-left {
+    flex: 0 0 280px;
+    height: 100px;
+    background: #101010;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+
+.top-right {
+    flex: 1;
+    max-width: calc(90% - 300px);
+    height: 100px;
+    background: #101010;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.hover-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #999;
+    position: relative;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.hover-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #ff00ff;
+    box-shadow: 0 0 8px #ff00ff;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+/* Subrayado rosa para la página activa */
+.hover-item.active::after {
+    width: 100%;
+    background: #ff00ff; /* rosa */
+    box-shadow: 0 0 8px #ff00ff;
+}
+
+/* Mantener el efecto hover normal además de la clase active */
+.hover-item.active:hover::after {
+    width: 100%;
+    background: #ff00ff;
+}
+
+
+.hover-item:hover {
+    color: #fff;
+}
+
+.hover-item:hover::after {
+    width: 100%;
+}
+
+.hover-item:hover .nav-symbol {
+    color: #fff;
+}
+
+.nav-symbol {
+    font-size: 20px;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+/* Cuadro central con subcuadros */
+.central-box {
+    position: relative;
+    top: -170px; 
+    background: #101010;
+    border-radius: 12px;  
+    width: 90%;   
+    max-width: 1500px;
+    height: 500px;        
+    box-shadow: 0 0 40px rgba(0,0,0,0.7); 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.subcuadro-1 {
+    background: url("C:/Users/elspi/OneDrive/Desktop/server/LAUNCHER/PAGINA/ASSETS/imagenes/cuadraditos/SUBCUADRADO1.png") no-repeat center center;
+    background-size: 1930px;
+    background-position: 0% center; /* 70% hacia la derecha, centrado vertical */
+    border-radius: 15px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* mueve el contenido a la derecha */
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 17px; /* más pequeño */
+}
+
+.text-right {
+    text-align: center;
+    max-width: 44%; /* opcional: limita ancho del texto */
+}
+
+.subcuadros-bottom {
+    display: flex;
+    flex: 1;
+    gap: 15px;
+}
+
+.subcuadro-2, .subcuadro-3, .subcuadro-4 {
+    position: relative;
+    border-radius: 15px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3a3a3a;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Imagen de fondo como pseudo-elemento */
+.subcuadro-2::before,
+.subcuadro-3::before,
+.subcuadro-4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1);
+    transition: transform 0.3s ease; /* transición suave siempre activa */
+    z-index: 0;
+}
+
+/* Asignar imágenes */
+.subcuadro-2::before { background-image: url("C:/Users/elspi/OneDrive/Desktop/server/LAUNCHER/PAGINA/ASSETS/imagenes/cuadraditos/0.5.2.png"); }
+.subcuadro-3::before { background-image: url("C:/Users/elspi/OneDrive/Desktop/server/LAUNCHER/PAGINA/ASSETS/imagenes/cuadraditos/0.5.1.png"); }
+.subcuadro-4::before { background-image: url("C:/Users/elspi/OneDrive/Desktop/server/LAUNCHER/PAGINA/ASSETS/imagenes/cuadraditos/0.5.0.png"); }
+
+/* Hover: agranda suavemente mientras el cursor está encima */
+.subcuadro-2:hover::before,
+.subcuadro-3:hover::before,
+.subcuadro-4:hover::before {
+    transform: scale(1.1);
+}
+
+/* Rebote al salir del hover */
+.subcuadro-2::before,
+.subcuadro-3::before,
+.subcuadro-4::before {
+    animation: none;
+}
+
+.subcuadro-2::before.bounce,
+.subcuadro-3::before.bounce,
+.subcuadro-4::before.bounce {
+    animation: bounceBack 0.6s forwards;
+}
+
+@keyframes bounceBack {
+    0% { transform: scale(1.1); }
+    50% { transform: scale(0.95); }
+    70% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* quita todo el scroll */
+}
+
+.nav-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    filter: brightness(0.75); /* igual al color gris de los emojis */
+    transition: 0.3s ease;
+    margin-right: -30px;
+}
+
+.hover-item:hover .nav-icon,
+.hover-item.active .nav-icon {
+    filter: brightness(1); /* se ilumina igual que el hover del emoji */
+}
+</style>
+</head>
+<body>
+
+<!-- Sección superior: Logo + BodrioCraft / Discord -->
+<div class="logo-section">
+    <!-- Lado izquierdo: IP del servidor -->
+    <div class="side-box left-side" id="left-box">
+        <div class="title" style="text-align: left;">BodrioCraft.es</div>
+        <div class="subtitle" style="text-align: left;">¡CLICK PARA COPIAR!</div>
+    </div>
+
+    <!-- Círculo del logo -->
+    <img src="C:\Users\elspi\OneDrive\Desktop\server\LAUNCHER\PAGINA\ASSETS\imagenes\logo\bodriocraft.png" 
+     alt="Logo BodrioCraft" class="logo-image">
+
+    <!-- Lado derecho: Discord -->
+    <div class="side-box right-side" id="right-box">
+        <div class="title" style="text-align: right;">Discord</div>
+        <div class="subtitle" style="text-align: right;">¡CLICK PARA UNIRTE!</div>
+    </div>
+</div>
+
+<!-- Top navigation -->
+<div class="top-container">
+    <div class="top-left">
+        <div class="hover-item" onclick="window.location.href='index-staff.html'">
+            <img src="ASSETS/imagenes/cuadraditos/ICONO/coronas.png" alt="Staff" class="nav-icon">STAFF
+        </div>
+    </div>
+    <div class="top-right">
+<div class="hover-item" onclick="window.location.href='index.html'">
+    <img src="ASSETS/imagenes/cuadraditos/ICONO/house.png" class="nav-icon" alt="Inicio">
+    INICIO
+</div>
+
+<div class="hover-item" onclick="window.location.href='index-reglas.html'">
+    <img src="ASSETS/imagenes/cuadraditos/ICONO/REGLAS.png" class="nav-icon" alt="Reglas">
+    REGLAS
+</div>
+
+<div class="hover-item" onclick="window.location.href='index-votar.html'">
+    <img src="ASSETS/imagenes/cuadraditos/ICONO/votar.png" class="nav-icon" alt="Votar">
+    VOTAR
+</div>
+
+<div class="hover-item" onclick="window.location.href='https://wasfactions-webstore.tebex.io/'">
+    <img src="ASSETS/imagenes/cuadraditos/ICONO/tienda.png" class="nav-icon" alt="Tienda">
+    TIENDA
+</div>
+
+    </div>
+</div>
+
+<!-- Cuadro central con subcuadros -->
+<div class="central-box">
+    <div class="subcuadro-1">
+        <div class="text-right">
+            Queremos informar a toda nuestra comunidad que nuestro servidor
+            BodrioCraft se encuentra actualmente en desarrollo. Cada actualización
+            y novedad será publicada en nuestra página oficial, para que siempre
+            estés al tanto de los cambios y mejoras. Estamos trabajando para que 
+            la experiencia de juego sea cada vez mejor, más cómoda y divertida para 
+            todos nuestros jugadores. Nuestro objetivo es ofrecer un servidor estable,
+            con nuevas funciones y un entorno seguro donde puedas disfrutar al máximo.
+            <br><br>
+            ¡Gracias por tu paciencia y apoyo! Mantente conectado para no perderte ninguna actualización.<br><br>
+        </div>
+    </div>
+    <div class="subcuadros-bottom">
+        <div class="subcuadro-2"></div>
+        <div class="subcuadro-3"></div>
+        <div class="subcuadro-4"></div>
+    </div>
+</div>
+<footer style="width: 100%; background: #101010; color: #fff; padding: 20px 0; display: flex; justify-content: space-around; flex-wrap: wrap; font-family: 'Press Start 2P', cursive;">
+    <div>
+        <strong>IP:</strong> play.WasFactions.es
+    </div>
+    <div>
+        <a href="index.html" style="color:#fff; text-decoration:none; margin-right: 15px;">Inicio</a>
+        <a href="index-reglas.html" style="color:#fff; text-decoration:none; margin-right: 15px;">Reglas</a>
+        <a href="index-tienda.html" style="color:#fff; text-decoration:none;">Tienda</a>
+    </div>
+    <div>
+        <a href="https://discord.gg/JAGKSeCfE4" style="color:#7289DA; text-decoration:none;">Discord</a>
+        <a href="https://www.youtube.com/@FabiUchiwua" style="color:#FF0000; text-decoration:none; margin-left: 10px;">YouTube</a>
+    </div>
+    <div style="width: 100%; text-align:center; margin-top:10px; font-size:12px;">
+        © 2025 WasFactions. Todos los derechos reservados.
+    </div>
+</footer>
+</body>
+</html>
